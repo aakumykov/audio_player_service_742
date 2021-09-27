@@ -27,7 +27,7 @@ public class AudioPlayerService
         context.startService(intent);
     }
 
-    public static void stop(@NonNull Context context) {
+    public static void pause(@NonNull Context context) {
         Intent intent = new Intent(context, MediaPlayer526.class);
         intent.setAction(ACTION_PAUSE);
         context.startService(intent);
