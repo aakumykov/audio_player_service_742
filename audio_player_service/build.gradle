@@ -36,5 +36,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation 'com.github.exp-test:media_player_526:1d0e58e507'
+    implementation 'com.github.exp-test:media_player_526:0.1'
 }
