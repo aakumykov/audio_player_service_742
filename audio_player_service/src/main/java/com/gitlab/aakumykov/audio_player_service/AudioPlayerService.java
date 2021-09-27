@@ -11,14 +11,12 @@ import androidx.annotation.Nullable;
 
 import com.gitlab.aakumykov.media_player_module.MediaPlayer526;
 
-public class AudioPlayerService
-        extends Service
-        implements MediaPlayer526.Callbacks
-{
+public class AudioPlayerService extends Service {
+
     private static final String ACTION_PLAY = "ACTION_PLAY";
     private static final String ACTION_PAUSE = "ACTION_PAUSE";
     private MediaPlayer526 mMediaPlayer;
-
+    private MediaPlayer526.Callbacks mCallbacks;
 
     // Статическе методы для удобства
     public static void play(@NonNull Context context) {
@@ -48,7 +46,20 @@ public class AudioPlayerService
     @Override
     public void onCreate() {
         super.onCreate();
-        mMediaPlayer = new MediaPlayer526(this);
+
+        mCallbacks = new MediaPlayer526.Callbacks() {
+            @Override
+            public void onPlay() {
+                Toast.makeText(AudioPlayerService.this, "Музыка играет", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPause() {
+                Toast.makeText(AudioPlayerService.this, "Музыка на паузе", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        mMediaPlayer = new MediaPlayer526(mCallbacks);
     }
 
     @Override
@@ -72,20 +83,6 @@ public class AudioPlayerService
 
     @Nullable @Override public IBinder onBind(Intent intent) {
         return new Binder(this);
-    }
-
-
-    // MediaPlayer526.Callbacks
-    @Override
-    public void onPlay() {
-        Toast.makeText(this, "Музыка играет", Toast.LENGTH_SHORT).show();
-        // TODO: уведомление
-    }
-
-    @Override
-    public void onPause() {
-        Toast.makeText(this, "Музыка на паузе", Toast.LENGTH_SHORT).show();
-        // TODO: уведомление
     }
 
 
