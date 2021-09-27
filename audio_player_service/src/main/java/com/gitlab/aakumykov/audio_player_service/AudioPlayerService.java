@@ -34,6 +34,16 @@ public class AudioPlayerService
     }
 
 
+    // "Динамические" методы
+    public void play() {
+        mMediaPlayer.play();
+    }
+
+    public void pause() {
+        mMediaPlayer.pause();
+    }
+
+
     // "Системные" методы службы
     @Override
     public void onCreate() {
@@ -60,7 +70,9 @@ public class AudioPlayerService
         return super.onStartCommand(intent, flags, startId);
     }
 
-    @Nullable @Override public IBinder onBind(Intent intent) { return null; }
+    @Nullable @Override public IBinder onBind(Intent intent) {
+        return new Binder(this);
+    }
 
 
     // MediaPlayer526.Callbacks
@@ -74,5 +86,21 @@ public class AudioPlayerService
     public void onPause() {
         Toast.makeText(this, "Музыка на паузе", Toast.LENGTH_SHORT).show();
         // TODO: уведомление
+    }
+
+
+    // Binder
+    private static class Binder extends android.os.Binder {
+
+        private final AudioPlayerService mAudioPlayerService;
+
+        public Binder(AudioPlayerService audioPlayerService) {
+            super();
+            mAudioPlayerService = audioPlayerService;
+        }
+
+        public AudioPlayerService getAudioPlayerService() {
+            return mAudioPlayerService;
+        }
     }
 }
