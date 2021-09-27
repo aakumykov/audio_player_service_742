@@ -90,7 +90,7 @@ public class AudioPlayerService
 
 
     // Binder
-    private static class Binder extends android.os.Binder {
+    public static class Binder extends android.os.Binder {
 
         private final AudioPlayerService mAudioPlayerService;
 
