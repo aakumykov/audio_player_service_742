@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Демо AudioPlayerService</string>
+
+    <string name="sound_preparing_error">Ошибка обработки звука:\n%1$s</string>
+    <string name="sound_playing_error">Ошибка воспроизведения:\n%1$s</string>
+    <string name="unknown_player_error">Неизвестная ошибка:\n%1$s</string>
+    <string name="track_preparing_error">Ошибка подготовки трека:\n%1$s</string>
+    <string name="error_msg">%1$s: %2$s</string>
+    <string name="error_preparing_track">Ошибка подготовки трека\n«%1$s»\n%2$s</string>
+    <string name="error_playing_track">Ошибка воспроизведения\n«%1$s»\n%2$s</string>
+    <string name="files_are_loaded_from_dir">%1$s %2$s прочитано из каталога %3$s</string>
+
+</resources>

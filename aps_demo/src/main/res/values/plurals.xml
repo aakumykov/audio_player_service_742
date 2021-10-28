@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="file">
+        <item quantity="zero">файлов</item>
+        <item quantity="one">файл</item>
+        <item quantity="two">файла</item>
+        <item quantity="few">файла</item>
+        <item quantity="many">файлов</item>
+        <item quantity="other">файлов</item>
+    </plurals>
+</resources>
