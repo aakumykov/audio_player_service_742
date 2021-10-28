@@ -92,6 +92,8 @@ public class DemoActivity extends AppCompatActivity {
                         mMusicList.add(new MusicItem(fileName, filePath));
                     });
         }
+
+        displayLoadedFilesCount();
     }
 
 
