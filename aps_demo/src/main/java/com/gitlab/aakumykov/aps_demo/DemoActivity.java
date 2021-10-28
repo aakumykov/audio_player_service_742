@@ -3,7 +3,6 @@ package com.gitlab.aakumykov.aps_demo;
 import android.Manifest;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -57,10 +56,16 @@ public class DemoActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Log.d("PERMISSIONS", "onRequestPermissionsResult()");
+
+        /*Log.d("PERMISSIONS", "== onRequestPermissionsResult() ==");
+
         Log.d("PERMISSIONS", "requestCode: "+requestCode);
-        Log.d("PERMISSIONS", "permissions: "+permissions);
-        Log.d("PERMISSIONS", "grantResults: "+grantResults);
+
+        for (String perm : permissions)
+            Log.d("PERMISSIONS", "permission: "+perm);
+
+        for (int result : grantResults)
+            Log.d("PERMISSIONS", "grantResult: "+result);*/
     }
 
     @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
