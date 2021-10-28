@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notifications_channel_name">Аудио плеер</string>
+    <string name="notifications_channel_description">Уведомления о работе аудио плеера</string>
+    <string name="skip_to_prev">Предыдущий</string>
+    <string name="skip_to_next">Следующий</string>
+    <string name="notification_text_playing">Воспроизводится</string>
+    <string name="notification_action_pause">Пауза</string>
+    <string name="notification_text_paused">Приостановлено</string>
+    <string name="notification_action_resume">Возобновить</string>
+    <string name="error">Ошибка:\n%1$s</string>
+    <string name="notification_action_stop">Стоп</string>
+    <string name="nothing_to_play">Нечего воспроизводить</string>
+    <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="error_details">%1$s:\n%2$s</string>
+</resources>
