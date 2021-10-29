@@ -28,4 +28,12 @@ public class MusicItem implements iMusicItem {
     public String getFilePath() {
         return mFilePath;
     }
+
+    @Override
+    public String toString() {
+        return "MusicItem{" +
+                "mTitle='" + mTitle + '\'' +
+                ", mFilePath='" + mFilePath + '\'' +
+                '}';
+    }
 }
