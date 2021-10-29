@@ -38,6 +38,7 @@ dependencies {
 
     implementation "androidx.media:media:1.4.3"
 
-    implementation 'com.github.aakumykov:gapless_audio_player_838:-SNAPSHOT'
+//    implementation 'com.github.aakumykov:gapless_audio_player_838:-SNAPSHOT'
+    implementation 'com.github.aakumykov:gapless_audio_player_838:master-SNAPSHOT'
 
 }
