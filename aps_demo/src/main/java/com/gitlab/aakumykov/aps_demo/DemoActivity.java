@@ -147,6 +147,7 @@ public class DemoActivity extends AppCompatActivity {
         hideError();
 
         if (AudioPlayerService.isStopped()) {
+            prepareMusicList();
             AudioPlayerService.play(this, mMusicList);
         }
         else {
