@@ -3,6 +3,7 @@ package com.gitlab.aakumykov.aps_demo;
 import android.Manifest;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -49,27 +50,17 @@ public class DemoActivity extends AppCompatActivity {
         prepareLayout();
         prepareGUI();
         prepareLiveData();
-
-        DemoActivityPermissionsDispatcher.prepareMusicListWithPermissionCheck(this);
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        /*Log.d("PERMISSIONS", "== onRequestPermissionsResult() ==");
-
-        Log.d("PERMISSIONS", "requestCode: "+requestCode);
-
-        for (String perm : permissions)
-            Log.d("PERMISSIONS", "permission: "+perm);
-
-        for (int result : grantResults)
-            Log.d("PERMISSIONS", "grantResult: "+result);*/
+        DemoActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-    void prepareMusicList() {
+    void prepareMusicListAndPlay() {
+        Log.d(TAG, "prepareMusicList()");
 
         mMusicDir = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_DOWNLOADS);
@@ -94,6 +85,8 @@ public class DemoActivity extends AppCompatActivity {
         }
 
         displayLoadedFilesCount();
+
+        AudioPlayerService.play(this, mMusicList);
     }
 
 
@@ -147,8 +140,7 @@ public class DemoActivity extends AppCompatActivity {
         hideError();
 
         if (AudioPlayerService.isStopped()) {
-            prepareMusicList();
-            AudioPlayerService.play(this, mMusicList);
+            DemoActivityPermissionsDispatcher.prepareMusicListAndPlayWithPermissionCheck(this);
         }
         else {
             if (AudioPlayerService.isPaused()) {
