@@ -615,9 +615,9 @@ public class AudioPlayerService extends Service
                 Progress progress = mAudioPlayer.getProgress();
                 if (null != progress) {
 
-                    /*String title = mAudioPlayer.getTitle();
+                    String title = mAudioPlayer.getTitle();
                     if (null != title)
-                        showPlayingNotification(title, progress);*/
+                        showPlayingNotification(title, progress);
 
                     changeProgressLiveData(new PlayingProgress(
                             progress.getPosition(),
