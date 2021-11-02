@@ -20,6 +20,10 @@ public class PlayingPlayerState extends PlayerState {
 
     public iMusicItem getMusicItem() {
         return new iMusicItem() {
+            @NonNull @Override
+            public String getId() {
+                return mSoundItem.getId();
+            }
 
             @NonNull @Override
             public String getTitle() {
