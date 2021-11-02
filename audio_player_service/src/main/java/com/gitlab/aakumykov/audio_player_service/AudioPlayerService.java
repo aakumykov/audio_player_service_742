@@ -116,8 +116,10 @@ public class AudioPlayerService extends Service
     public static void play(@NonNull Context context, List<iMusicItem> musicItemList) {
 
         sSoundItemList.clear();
+
         for (iMusicItem musicItem : musicItemList)
             sSoundItemList.add(new SoundItem(
+                    musicItem.getId(),
                     musicItem.getTitle(),
                     musicItem.getFilePath()
             ));
@@ -234,6 +236,7 @@ public class AudioPlayerService extends Service
             public void onStarted(@NonNull SoundItem soundItem) {
 
                 MusicItem musicItem = new MusicItem(
+                        soundItem.getId(),
                         soundItem.getTitle(),
                         soundItem.getFilePath()
                 );
