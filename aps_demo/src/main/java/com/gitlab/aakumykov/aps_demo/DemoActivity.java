@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
@@ -80,7 +81,11 @@ public class DemoActivity extends AppCompatActivity {
                     .map(File::getName)
                     .forEach(fileName -> {
                         String filePath = mMusicDir + "/" + fileName;
-                        mMusicList.add(new MusicItem(fileName, filePath));
+                        mMusicList.add(new MusicItem(
+                                UUID.randomUUID().toString(),
+                                fileName,
+                                filePath
+                        ));
                     });
         }
 
