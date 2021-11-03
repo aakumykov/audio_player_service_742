@@ -1,20 +1,20 @@
 package com.gitlab.aakumykov.audio_player_service.player_states;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.gitlab.aakumykov.audio_player_service.other.ePlayerMode;
 import com.gitlab.aakumykov.audio_player_service.other.iMusicItem;
 
 public abstract class PlayerState {
 
-    @NonNull
+    @Nullable
     private final iMusicItem mMusicItem;
 
-    public PlayerState(@NonNull iMusicItem musicItem) {
+    public PlayerState(@Nullable iMusicItem musicItem) {
         mMusicItem = musicItem;
     }
 
-    @NonNull
+    @Nullable
     public iMusicItem getMusicItem() {
         return mMusicItem;
     }

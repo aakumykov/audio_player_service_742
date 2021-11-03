@@ -1,11 +1,13 @@
 package com.gitlab.aakumykov.audio_player_service.player_states;
 
+import androidx.annotation.Nullable;
+
 import com.gitlab.aakumykov.audio_player_service.other.ePlayerMode;
 import com.gitlab.aakumykov.audio_player_service.other.iMusicItem;
 
 public class PausedPlayerState extends PlayerState {
 
-    public PausedPlayerState(iMusicItem musicItem) {
+    public PausedPlayerState(@Nullable iMusicItem musicItem) {
         super(musicItem);
     }
 
