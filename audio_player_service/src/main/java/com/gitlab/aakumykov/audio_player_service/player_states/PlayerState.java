@@ -8,15 +8,15 @@ import com.gitlab.aakumykov.audio_player_service.other.iSoundTrack;
 public abstract class PlayerState {
 
     @Nullable
-    private final iSoundTrack mMusicItem;
+    private final iSoundTrack mSoundTrack;
 
-    public PlayerState(@Nullable iSoundTrack musicItem) {
-        mMusicItem = musicItem;
+    public PlayerState(@Nullable iSoundTrack soundTrack) {
+        mSoundTrack = soundTrack;
     }
 
     @Nullable
-    public iSoundTrack getMusicItem() {
-        return mMusicItem;
+    public iSoundTrack getSoundTrack() {
+        return mSoundTrack;
     }
 
     // TODO: аннотировать @NonNull
