@@ -3,19 +3,19 @@ package com.gitlab.aakumykov.audio_player_service.player_states;
 import androidx.annotation.Nullable;
 
 import com.gitlab.aakumykov.audio_player_service.other.ePlayerMode;
-import com.gitlab.aakumykov.audio_player_service.other.iMusicItem;
+import com.gitlab.aakumykov.audio_player_service.other.iSoundTrack;
 
 public abstract class PlayerState {
 
     @Nullable
-    private final iMusicItem mMusicItem;
+    private final iSoundTrack mMusicItem;
 
-    public PlayerState(@Nullable iMusicItem musicItem) {
+    public PlayerState(@Nullable iSoundTrack musicItem) {
         mMusicItem = musicItem;
     }
 
     @Nullable
-    public iMusicItem getMusicItem() {
+    public iSoundTrack getMusicItem() {
         return mMusicItem;
     }
 

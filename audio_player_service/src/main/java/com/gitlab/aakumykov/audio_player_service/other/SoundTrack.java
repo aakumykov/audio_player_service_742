@@ -4,19 +4,19 @@ import androidx.annotation.NonNull;
 
 import com.gitlab.aakumykov.gapless_audio_player.SoundItem;
 
-public class MusicItem implements iMusicItem {
+public class SoundTrack implements iSoundTrack {
 
     @NonNull private final String mId;
     @NonNull private final String mTitle;
     @NonNull private final String mFilePath;
 
-    public MusicItem(@NonNull String id, @NonNull String title, @NonNull String filePath) {
+    public SoundTrack(@NonNull String id, @NonNull String title, @NonNull String filePath) {
         mId = id;
         mTitle = title;
         mFilePath = filePath;
     }
 
-    public MusicItem(@NonNull SoundItem soundItem) {
+    public SoundTrack(@NonNull SoundItem soundItem) {
         mId = soundItem.getId();
         mTitle = soundItem.getTitle();
         mFilePath = soundItem.getFilePath();
@@ -40,7 +40,7 @@ public class MusicItem implements iMusicItem {
 
     @Override
     public String toString() {
-        return "MusicItem{" +
+        return "SoundTrack{" +
                 "mTitle='" + mTitle + '\'' +
                 ", mFilePath='" + mFilePath + '\'' +
                 '}';

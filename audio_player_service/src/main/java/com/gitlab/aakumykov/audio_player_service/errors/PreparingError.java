@@ -2,11 +2,11 @@ package com.gitlab.aakumykov.audio_player_service.errors;
 
 import androidx.annotation.NonNull;
 
-import com.gitlab.aakumykov.audio_player_service.other.MusicItem;
+import com.gitlab.aakumykov.audio_player_service.other.SoundTrack;
 
 public class PreparingError extends MusicError {
 
-    public PreparingError(@NonNull MusicItem musicItem, @NonNull String errorMsg) {
+    public PreparingError(@NonNull SoundTrack musicItem, @NonNull String errorMsg) {
         super(musicItem, errorMsg);
     }
 }
