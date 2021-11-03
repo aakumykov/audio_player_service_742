@@ -234,40 +234,30 @@ public class AudioPlayerService extends Service
 
             @Override
             public void onStarted(@NonNull SoundItem soundItem) {
-
-                MusicItem musicItem = new MusicItem(
-                        soundItem.getId(),
-                        soundItem.getTitle(),
-                        soundItem.getFilePath()
-                );
-
-                changePlayerStateLiveData(new PlayingPlayerState(musicItem));
-
+                changePlayerStateLiveData(new PlayingPlayerState(currentMusicItem()));
                 changeTrackInfoLiveData(new TrackIfo(soundItem.getTitle()));
-
                 showPlayingNotification(soundItem.getTitle(), null);
-
                 startProgressTracking();
             }
 
             @Override
             public void onStopped() {
                 stopProgressTracking();
-                changePlayerStateLiveData(new StoppedPlayerState());
+                changePlayerStateLiveData(new StoppedPlayerState(currentMusicItem()));
                 removeNotification();
             }
 
             @Override
             public void onPaused() {
                 stopProgressTracking();
-                changePlayerStateLiveData(new PausedPlayerState());
+                changePlayerStateLiveData(new PausedPlayerState(currentMusicItem()));
                 showPauseNotification();
             }
 
             @Override
             public void onResumed() {
                 startProgressTracking();
-                changePlayerStateLiveData(new ResumedPlayerState());
+                changePlayerStateLiveData(new ResumedPlayerState(currentMusicItem()));
                 showPlayingNotification(mAudioPlayer.getTitle(), mAudioPlayer.getProgress());
             }
 
@@ -313,14 +303,27 @@ public class AudioPlayerService extends Service
 
             @Override
             public void onNoNextTracks() {
-                changePlayerStateLiveData(new EndBoundaryReachedPlayerState());
+                changePlayerStateLiveData(new EndBoundaryReachedPlayerState(currentMusicItem()));
             }
 
             @Override
             public void onNoPrevTracks() {
-                changePlayerStateLiveData(new StartBoundaryReachedPlayerState());
+                changePlayerStateLiveData(new StartBoundaryReachedPlayerState(currentMusicItem()));
             }
         };
+    }
+
+    @Nullable
+    private iMusicItem currentMusicItem() {
+
+        @Nullable
+        SoundItem soundItem = mAudioPlayer.getSoundItem();
+
+        return (null != soundItem) ? new MusicItem(
+                soundItem.getId(),
+                soundItem.getTitle(),
+                soundItem.getFilePath()
+        ) : null;
     }
 
     private void prepareMediaPlayer() {
