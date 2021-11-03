@@ -16,11 +16,11 @@ import com.gitlab.aakumykov.audio_player_service.AudioPlayerService;
 import com.gitlab.aakumykov.audio_player_service.errors.CommonError;
 import com.gitlab.aakumykov.audio_player_service.errors.PlayingError;
 import com.gitlab.aakumykov.audio_player_service.errors.PreparingError;
-import com.gitlab.aakumykov.audio_player_service.other.MusicItem;
 import com.gitlab.aakumykov.audio_player_service.other.PlayingProgress;
+import com.gitlab.aakumykov.audio_player_service.other.SoundTrack;
 import com.gitlab.aakumykov.audio_player_service.other.TrackIfo;
 import com.gitlab.aakumykov.audio_player_service.other.ePlayerMode;
-import com.gitlab.aakumykov.audio_player_service.other.iMusicItem;
+import com.gitlab.aakumykov.audio_player_service.other.iSoundTrack;
 import com.gitlab.aakumykov.audio_player_service.player_states.PlayerState;
 import com.gitlab.aakumykov.audio_player_service.player_states.PlayingPlayerState;
 
@@ -41,7 +41,7 @@ public class DemoActivity extends AppCompatActivity {
     private static final String TAG = DemoActivity.class.getSimpleName();
     private ActivityDemoBinding mViewBinding;
     private File mMusicDir;
-    private final List<iMusicItem> mMusicList = new ArrayList<>();
+    private final List<iSoundTrack> mMusicList = new ArrayList<>();
 
 
     @Override
@@ -81,7 +81,7 @@ public class DemoActivity extends AppCompatActivity {
                     .map(File::getName)
                     .forEach(fileName -> {
                         String filePath = mMusicDir + "/" + fileName;
-                        mMusicList.add(new MusicItem(
+                        mMusicList.add(new SoundTrack(
                                 UUID.randomUUID().toString(),
                                 fileName,
                                 filePath
@@ -230,7 +230,7 @@ public class DemoActivity extends AppCompatActivity {
 
     // Методы обработки состояний
     private void onPlayingState(@NonNull PlayingPlayerState playingPlayerState) {
-        showTrackName(playingPlayerState.getMusicItem().getTitle());
+        showTrackName(playingPlayerState.getSoundTrack().getTitle());
         showPauseButton();
         enableSeekBar();
     }
