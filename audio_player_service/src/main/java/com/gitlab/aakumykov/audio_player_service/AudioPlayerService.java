@@ -25,11 +25,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.gitlab.aakumykov.audio_player_service.errors.CommonError;
 import com.gitlab.aakumykov.audio_player_service.errors.PlayingError;
 import com.gitlab.aakumykov.audio_player_service.errors.PreparingError;
-import com.gitlab.aakumykov.audio_player_service.other.MusicItem;
 import com.gitlab.aakumykov.audio_player_service.other.PlayingProgress;
+import com.gitlab.aakumykov.audio_player_service.other.SoundTrack;
 import com.gitlab.aakumykov.audio_player_service.other.TrackIfo;
 import com.gitlab.aakumykov.audio_player_service.other.ePlayerMode;
-import com.gitlab.aakumykov.audio_player_service.other.iMusicItem;
+import com.gitlab.aakumykov.audio_player_service.other.iSoundTrack;
 import com.gitlab.aakumykov.audio_player_service.player_states.EndBoundaryReachedPlayerState;
 import com.gitlab.aakumykov.audio_player_service.player_states.PausedPlayerState;
 import com.gitlab.aakumykov.audio_player_service.player_states.PlayerState;
@@ -113,11 +113,11 @@ public class AudioPlayerService extends Service
 
 
     // Статические методы для управления службой без соединения (bound) с ней.
-    public static void play(@NonNull Context context, List<iMusicItem> musicItemList) {
+    public static void play(@NonNull Context context, List<iSoundTrack> musicItemList) {
 
         sSoundItemList.clear();
 
-        for (iMusicItem musicItem : musicItemList)
+        for (iSoundTrack musicItem : musicItemList)
             sSoundItemList.add(new SoundItem(
                     musicItem.getId(),
                     musicItem.getTitle(),
@@ -127,7 +127,7 @@ public class AudioPlayerService extends Service
         startServiceWithCommand(context, COMMAND_PLAY);
     }
 
-    public static void play(@NonNull Context context, iMusicItem soundItem) {
+    public static void play(@NonNull Context context, iSoundTrack soundItem) {
         play(context, Collections.singletonList(soundItem));
     }
 
@@ -269,7 +269,7 @@ public class AudioPlayerService extends Service
             @Override
             public void onPreparingError(@NonNull SoundItem soundItem, @NonNull String errorMsg) {
                 sPreparingErrorLiveData.setValue(new PreparingError(
-                        new MusicItem(soundItem),
+                        new SoundTrack(soundItem),
                         errorMsg
                 ));
             }
@@ -277,7 +277,7 @@ public class AudioPlayerService extends Service
             @Override
             public void onPlayingError(@NonNull SoundItem soundItem, @NonNull String errorMsg) {
                 sPlayingErrorLiveData.setValue(new PlayingError(
-                        new MusicItem(soundItem),
+                        new SoundTrack(soundItem),
                         errorMsg
                 ));
             }
@@ -314,12 +314,12 @@ public class AudioPlayerService extends Service
     }
 
     @Nullable
-    private iMusicItem currentMusicItem() {
+    private iSoundTrack currentMusicItem() {
 
         @Nullable
         SoundItem soundItem = mAudioPlayer.getSoundItem();
 
-        return (null != soundItem) ? new MusicItem(
+        return (null != soundItem) ? new SoundTrack(
                 soundItem.getId(),
                 soundItem.getTitle(),
                 soundItem.getFilePath()
