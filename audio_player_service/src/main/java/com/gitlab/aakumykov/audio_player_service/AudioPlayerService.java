@@ -88,6 +88,8 @@ public class AudioPlayerService extends Service
 
     private static final long PROGRESS_UPDATE_PERIOD_MS = 1000;
 
+    private static final Object SYNC_HANDLE = new Object();
+
     private NotificationCompat.Builder mPlayingNotificationBuilder;
 
     private PendingIntent mPrevPendingIntent;
@@ -550,10 +552,9 @@ public class AudioPlayerService extends Service
             mPlayingNotificationBuilder.setSubText(trackPlayingTime);
         }
 
-        startForeground(
-                NOTIFICATION_ID,
-                mPlayingNotificationBuilder.build()
-        );
+        synchronized (SYNC_HANDLE) {
+            startForeground(NOTIFICATION_ID, mPlayingNotificationBuilder.build());
+        }
     }
 
     private void showPauseNotification() {
