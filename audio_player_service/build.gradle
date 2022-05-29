@@ -32,5 +32,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation "androidx.media:media:1.4.3"
 
-    implementation 'com.github.aakumykov:gapless_audio_player_838:26bf17ad57'
+    implementation 'com.github.aakumykov:gapless_audio_player_838:0.3'
 }
